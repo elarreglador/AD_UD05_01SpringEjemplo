@@ -20,5 +20,12 @@ public class DepartamentosRestControllers {
 	public List<Departamentos> getAllEmpleados(){
 		return departamentosService.findAll();
 	}
+	
+	@GetMapping("/about")
+	public String about() {
+		return " David Moreno<br>"
+				+ " CF2 - Acceso a Datos<br>"
+				+ " febrero de 2025";
+	}
 
 }
