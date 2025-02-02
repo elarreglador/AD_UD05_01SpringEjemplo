@@ -18,5 +18,10 @@ public class EmpleadosServiceImpl implements IEmpleadosService {
 	public List<Empleados> findAll(){
 		return (List<Empleados>)empleadosDAO.findAll();
 	}
+	
+	@Override
+	public Empleados findById(int id) {
+		return empleadosDAO.findById(id).orElse(null);
+	}
 
 }

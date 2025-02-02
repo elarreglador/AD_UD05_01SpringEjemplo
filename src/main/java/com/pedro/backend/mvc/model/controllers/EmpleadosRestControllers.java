@@ -20,5 +20,10 @@ public class EmpleadosRestControllers {
 	public List<Empleados> getAllEmpleados(){
 		return empleadosService.findAll();
 	}
+	
+	@GetMapping("/empleados/{id}")
+	public Empleados getEmpleadoById(@PathVariable int id) {
+		return empleadosService.findById(id);
+	}
 
 }

@@ -21,10 +21,10 @@ public class DepartamentosRestControllers {
 		return departamentosService.findAll();
 	}
 	
-	@GetMapping("/about")
+	@GetMapping("departamentos/about")
 	public String about() {
 		return " David Moreno<br>"
-				+ " CF2 - Acceso a Datos<br>"
+				+ " CFS2 - Acceso a Datos<br>"
 				+ " febrero de 2025";
 	}
 
