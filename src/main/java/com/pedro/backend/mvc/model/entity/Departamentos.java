@@ -20,9 +20,6 @@ import jakarta.persistence.Table;
 @Table(name = "departamentos", catalog = "personal")
 public class Departamentos implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private int deptNo;
 	private String dnombre;

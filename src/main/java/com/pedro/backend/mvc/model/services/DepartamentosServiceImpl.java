@@ -18,4 +18,20 @@ public class DepartamentosServiceImpl implements IDepartamentosService {
 		return (List<Departamentos>)departamentosDAO.findAll();
 	}
 
+	@Override
+	public Departamentos findById(int id) {
+		return departamentosDAO.findById(id).orElse(null);
+	}
+
+	@Override
+	public void save(Departamentos dep) {
+		departamentosDAO.save(dep);
+		
+	}
+
+	@Override
+	public void delete(Departamentos dep) {
+		departamentosDAO.delete(dep);
+	}
+
 }
