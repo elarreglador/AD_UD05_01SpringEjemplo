@@ -30,23 +30,11 @@
 				},
 				{
 					"name": "get empleado",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"empNo\": 2,\n    \"apellido\": \"Martinez\",\n    \"oficio\": \"Comercial\",\n    \"dir\": 1,\n    \"fechaAlta\": \"2020-01-01\",\n    \"salario\": 1800.0,\n    \"comision\": 15.0\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "localhost:8080/api/empleados/2",
+							"raw": "localhost:8080/api/empleados/22",
 							"host": [
 								"localhost"
 							],
@@ -54,7 +42,28 @@
 							"path": [
 								"api",
 								"empleados",
-								"2"
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "info departamento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/empleados/infoDep/22",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"empleados",
+								"infoDep",
+								"22"
 							]
 						}
 					},
@@ -67,7 +76,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"empNo\": 2,\n    \"apellido\": \"Martinez\",\n    \"oficio\": \"Comercial\",\n    \"dir\": 1,\n    \"fechaAlta\": \"2020-01-01\",\n    \"salario\": 1800.0,\n    \"comision\": 15.0\n}",
+							"raw": "{\n    \"empNo\": 22,\n    \"apellido\": \"Martin\",\n    \"oficio\": \"Comercial\",\n    \"dir\": 1,\n    \"fechaAlta\": \"2025-01-01\",\n    \"salario\": 1800.0,\n    \"comision\": 15.0\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -83,6 +92,27 @@
 							"path": [
 								"api",
 								"empleados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "traslada empleado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/empleados/22/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"empleados",
+								"22",
+								"1"
 							]
 						}
 					},
@@ -123,7 +153,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/empleados/22",
+							"raw": "localhost:8080/api/empleados/235",
 							"host": [
 								"localhost"
 							],
@@ -131,7 +161,7 @@
 							"path": [
 								"api",
 								"empleados",
-								"22"
+								"235"
 							]
 						}
 					},
@@ -167,7 +197,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/departamentos/2",
+							"raw": "localhost:8080/api/departamentos/778",
 							"host": [
 								"localhost"
 							],
@@ -175,7 +205,7 @@
 							"path": [
 								"api",
 								"departamentos",
-								"2"
+								"778"
 							]
 						}
 					},
@@ -241,8 +271,20 @@
 				{
 					"name": "del departamento",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/departamentos/22",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"departamentos",
+								"22"
+							]
+						}
 					},
 					"response": []
 				}
