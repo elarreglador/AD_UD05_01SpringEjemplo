@@ -46,20 +46,40 @@ mvn spring-boot:run
 Estructura del Proyecto
 
 ```
-/src
-  /main
-    /java/com/ad/backend/mvc
-      /model/entity     # Clases de entidades (Departamentos, Empleados)
-      /model/dao       # Interfaces de acceso a datos
-      /model/services  # Lógica de negocio
-    /resources
-      application.properties  # Configuración de la aplicación
-  /test  # Pruebas unitarias
+src/main/java/com/pedro/backend/mvc/
+  |
+  L SpringEjemploApplication.java  			# Main
+  |
+  L model/controllers				
+  |   L DepartamentosRestControllers.java	# Controlador de departamentos
+  |   L EmpleadosRestControllers.java		# Controlador de empleados
+  |
+  L model/dao       
+  |   L IDepartamentosDAO.java				# Interfaz DAO departamentos
+  |   L IEmpleadosDAO.java					# Interfaz DAO empleados
+  |
+  L model/entity		
+  |   L Departamentos.java					# DAO departamentos
+  |   L Empleados.java  					# DAO empleados
+  |
+  L model/services  	
+      L DepartamentosServiceImpl.java		# Servicios de departamentos
+      L EmpleadosServiceImpl.java  			# Servicios de empleados
+      L IDepartamentosService.java  		# Interfaz servicios departamentos
+      L IEmpleadosService.java  			# Interfaz servicios empleados
 ```
+
+## Resumen del flujo
+
+1 - El controlador recibe las solicitudes HTTP
+
+2 - El controlador delega la logica a la interfaz de servicio que delega en el servicio que interactua con el DAO
+
+3 - El servicio devuelve los datos al controlador que los envia al cliente en formato JSON
 
 ## Endpoints API REST
 
-Ejemplo de algunos endpoints disponibles:
+Ejemplo de algunos endpoints disponibles en los controladores:
 
 GET /empleados - Obtiene todos los empleados.
 
