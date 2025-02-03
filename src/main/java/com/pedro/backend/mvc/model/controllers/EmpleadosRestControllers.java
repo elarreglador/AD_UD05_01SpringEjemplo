@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.pedro.backend.mvc.model.entity.Departamentos;
@@ -24,8 +25,14 @@ public class EmpleadosRestControllers {
 	
 	// Obtiene todos los empleados
 	@GetMapping("/empleados") // controla peticiones GET
-	public List<Empleados> getAllEmpleados(){
-		return empleadosService.findAll();
+	public ResponseEntity<?> getAllEmpleados(){
+		
+		List<Empleados> retorno = empleadosService.findAll();
+		
+		if (!retorno.isEmpty() ) {
+			return new ResponseEntity<List<Empleados>>(retorno, HttpStatus.OK);
+		} 
+		return ResponseEntity.noContent().build();
 	}
 	
 	// Crea un nuevo empleado
@@ -40,8 +47,13 @@ public class EmpleadosRestControllers {
 	
 	// Obtiene un empleado en concreto
 	@GetMapping("/empleados/{id}") // controla peticiones GET
-	public Empleados getEmpleadoById(@PathVariable int id) {
-		return empleadosService.findById(id);
+	public ResponseEntity<?> getEmpleadoById(@PathVariable int id) {
+		
+		Empleados empleado = empleadosService.findById(id);
+		if (empleado == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return new ResponseEntity<Empleados>(empleado, HttpStatus.OK);
 	}
 	
 	// Elimina un empleado concreto
