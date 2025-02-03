@@ -6,5 +6,4 @@ import com.pedro.backend.mvc.model.entity.Empleados;
 
 public interface IEmpleadosDAO extends CrudRepository<Empleados, Integer> {
 
-	
 }

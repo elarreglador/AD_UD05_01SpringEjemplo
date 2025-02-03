@@ -3,6 +3,7 @@ package com.pedro.backend.mvc.model.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import com.pedro.backend.mvc.model.entity.Empleados;
@@ -16,14 +17,56 @@ public class EmpleadosRestControllers {
 	@Autowired
 	private IEmpleadosService empleadosService;
 	
-	@GetMapping("/empleados")
+	// Obtiene todos los empleados
+	@GetMapping("/empleados") // controla peticiones GET
 	public List<Empleados> getAllEmpleados(){
 		return empleadosService.findAll();
 	}
 	
-	@GetMapping("/empleados/{id}")
+	// Crea un nuevo empleado
+	@PostMapping("/empleados") // controla peticiones POST
+	@ResponseStatus(HttpStatus.CREATED)
+	public Empleados create(
+			// Recupera el body y lo hace obj Empleado
+			@RequestBody Empleados emp) {
+		empleadosService.save(emp);
+		return emp;
+	}
+	
+	// Obtiene un empleado en concreto
+	@GetMapping("/empleados/{id}") // controla peticiones GET
 	public Empleados getEmpleadoById(@PathVariable int id) {
 		return empleadosService.findById(id);
 	}
+	
+	// Elimina un empleado concreto
+	@DeleteMapping("/empleados/{id}") // controla peticiones DEL
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void delete(@PathVariable int id) {
+		Empleados emp = empleadosService.findById(id);
+		empleadosService.delete(emp);
+	}
+	
+	// Actualiza el empleado id con la info del @RequestBody
+	@PutMapping("/empleados/{id}") // controla peticiones PUT
+	@ResponseStatus(HttpStatus.CREATED)
+	public Empleados update(
+			// Recupera el body y lo hace obj Empleado
+			@RequestBody Empleados empleadoRecibido, 
+			@PathVariable int id) {
+		
+		Empleados empleadoActualizado = empleadosService.findById(id);
+		
+		empleadoActualizado.setApellido(empleadoRecibido.getApellido() );
+		empleadoActualizado.setComision(empleadoRecibido.getComision() );
+		empleadoActualizado.setDir(empleadoRecibido.getDir() );
+		empleadoActualizado.setFechaAlta(empleadoRecibido.getFechaAlta() );
+		empleadoActualizado.setOficio(empleadoRecibido.getOficio() );
+		empleadoActualizado.setSalario(empleadoRecibido.getSalario() );
+		
+		empleadosService.save(empleadoActualizado);
+		return empleadoActualizado;
+	}
+	
 
 }

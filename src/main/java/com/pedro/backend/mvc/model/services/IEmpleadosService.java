@@ -8,4 +8,8 @@ public interface IEmpleadosService {
 
 	Empleados findById(int id);
 
+	void save(Empleados e);
+	
+	public void delete(Empleados e);
+
 }

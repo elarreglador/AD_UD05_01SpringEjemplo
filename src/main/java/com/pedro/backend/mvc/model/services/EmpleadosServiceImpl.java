@@ -23,5 +23,15 @@ public class EmpleadosServiceImpl implements IEmpleadosService {
 	public Empleados findById(int id) {
 		return empleadosDAO.findById(id).orElse(null);
 	}
+	
+	@Override
+	public void save(Empleados e) {
+		empleadosDAO.save(e);
+	}
+	
+	@Override
+	public void delete(Empleados e) {
+		empleadosDAO.delete(e);
+	}
 
 }
