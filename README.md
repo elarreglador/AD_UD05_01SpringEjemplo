@@ -86,3 +86,7 @@ GET /empleados - Obtiene todos los empleados.
 GET /empleados/{id} - Obtiene un empleado por ID.
 
 POST /empleados - Crea un nuevo empleado.
+
+## Postman
+
+Para verificar funcionamiento he usado postman, en el directorio PostmanExport hay una exportacion de los metodos HTTP, se pueden importar y verificar el funcinamiento de la app.
