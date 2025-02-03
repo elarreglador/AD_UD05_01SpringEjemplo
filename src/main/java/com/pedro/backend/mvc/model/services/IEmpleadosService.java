@@ -1,6 +1,8 @@
 package com.pedro.backend.mvc.model.services;
 
 import java.util.List;
+
+import com.pedro.backend.mvc.model.entity.Departamentos;
 import com.pedro.backend.mvc.model.entity.Empleados;
 
 public interface IEmpleadosService {
@@ -13,4 +15,6 @@ public interface IEmpleadosService {
 	
 	public void delete(Empleados e);
 
+	void traslada(Empleados e, Departamentos destino);
+	
 }

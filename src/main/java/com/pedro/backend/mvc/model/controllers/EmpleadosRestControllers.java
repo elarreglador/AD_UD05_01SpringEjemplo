@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import com.pedro.backend.mvc.model.entity.Departamentos;
 import com.pedro.backend.mvc.model.entity.Empleados;
+import com.pedro.backend.mvc.model.services.IDepartamentosService;
 import com.pedro.backend.mvc.model.services.IEmpleadosService;
 
 @CrossOrigin(origins="*")
@@ -16,6 +18,9 @@ public class EmpleadosRestControllers {
 	
 	@Autowired
 	private IEmpleadosService empleadosService;
+	
+	@Autowired
+	private IDepartamentosService departamentosService;
 	
 	// Obtiene todos los empleados
 	@GetMapping("/empleados") // controla peticiones GET
@@ -47,6 +52,15 @@ public class EmpleadosRestControllers {
 		empleadosService.delete(emp);
 	}
 	
+	// Indica en que departamento trabaja un empleado
+	@GetMapping("/empleados/infoDep/{id}")
+	public Departamentos info(
+			@PathVariable int id) {
+		Empleados empleado = empleadosService.findById(id);
+		Departamentos departamento = empleado.getDepartamentos();
+		return departamento;
+	}
+	
 	// Actualiza el empleado id con la info del @RequestBody
 	@PutMapping("/empleados/{id}") // controla peticiones PUT
 	@ResponseStatus(HttpStatus.CREATED)
@@ -68,5 +82,18 @@ public class EmpleadosRestControllers {
 		return empleadoActualizado;
 	}
 	
-
+	// Translada a un empleado a un departamento destino
+	@PostMapping("/empleados/{idEmpleado}/{idDepartamento}")
+	public Departamentos traslado (
+			@PathVariable int idEmpleado,
+			@PathVariable int idDepartamento) {
+		
+		Empleados empleado = empleadosService.findById(idEmpleado);
+		Departamentos destino = departamentosService.findById(idDepartamento);
+		
+		empleado.setDepartamentos(destino);
+		empleadosService.save(empleado);
+		return destino;
+	}
+	
 }

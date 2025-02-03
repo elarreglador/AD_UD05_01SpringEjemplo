@@ -16,7 +16,7 @@ public class DepartamentosRestControllers {
 	
 	@Autowired
 	private IDepartamentosService departamentosService;
-	
+		
 	@GetMapping("/departamentos")
 	public List<Departamentos> getAllDepartamentos(){
 		return departamentosService.findAll();
@@ -72,5 +72,6 @@ public class DepartamentosRestControllers {
 		departamentosService.save(departamentoActualizado);
 		return departamentoActualizado;
 	}
+	
 
 }
