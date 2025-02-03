@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "ee89c869-b95c-4dcb-9713-cb14fde2cf0b",
+		"name": "AD_UD05_01SpringEjemplo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34894796"
+	},
+	"item": [
+		{
+			"name": "update empleado",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"empNo\": 1,\n    \"apellido\": \"Lightson\",\n    \"oficio\": \"Super Boss\",\n    \"dir\": 1,\n    \"fechaAlta\": \"2025-01-01\",\n    \"salario\": 3200.0,\n    \"comision\": 200.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/empleados/22",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"empleados",
+						"22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get empleado",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"empNo\": 2,\n    \"apellido\": \"Martinez\",\n    \"oficio\": \"Comercial\",\n    \"dir\": 1,\n    \"fechaAlta\": \"2020-01-01\",\n    \"salario\": 1800.0,\n    \"comision\": 15.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/empleados/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"empleados",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add empleado",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"empNo\": 2,\n    \"apellido\": \"Martinez\",\n    \"oficio\": \"Comercial\",\n    \"dir\": 1,\n    \"fechaAlta\": \"2020-01-01\",\n    \"salario\": 1800.0,\n    \"comision\": 15.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/empleados",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"empleados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "del empleado",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/empleados/22",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"empleados",
+						"22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all empleados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/empleados",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"empleados"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
